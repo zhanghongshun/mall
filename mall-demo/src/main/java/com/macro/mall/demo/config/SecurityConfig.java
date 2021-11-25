@@ -19,7 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.List;
 
 /**
- * SpringSecurity的配置
+ * SpringSecurity相关配置
+ * Created by macro on 2018/4/26.
  */
 @Configuration
 @EnableWebSecurity
@@ -31,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()//配置权限
 //                .antMatchers("/").access("hasRole('TEST')")//该路径需要TEST角色
-                .antMatchers("/").authenticated()//该路径需要登录认证
 //                .antMatchers("/brand/list").hasAuthority("TEST")//该路径需要TEST权限
                 .antMatchers("/**").permitAll()
                 .and()//启用基于http的认证

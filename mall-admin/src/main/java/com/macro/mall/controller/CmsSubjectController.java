@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * 商品专题Controller
+ * 商品专题管理Controller
  * Created by macro on 2018/6/1.
  */
 @Controller
@@ -34,7 +34,7 @@ public class CmsSubjectController {
         return CommonResult.success(subjectList);
     }
 
-    @ApiOperation(value = "根据专题名称分页获取专题")
+    @ApiOperation(value = "根据专题名称分页获取商品专题")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<CmsSubject>> getList(@RequestParam(value = "keyword", required = false) String keyword,

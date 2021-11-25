@@ -25,7 +25,7 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    @ApiOperation("首页内容页信息展示")
+    @ApiOperation("首页内容信息展示")
     @RequestMapping(value = "/content", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<HomeContentResult> content() {
@@ -58,5 +58,23 @@ public class HomeController {
                                                          @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         List<CmsSubject> subjectList = homeService.getSubjectList(cateId,pageSize,pageNum);
         return CommonResult.success(subjectList);
+    }
+
+    @ApiOperation("分页获取人气推荐商品")
+    @RequestMapping(value = "/hotProductList", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProduct>> hotProductList(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                                                         @RequestParam(value = "pageSize", defaultValue = "6") Integer pageSize) {
+        List<PmsProduct> productList = homeService.hotProductList(pageNum,pageSize);
+        return CommonResult.success(productList);
+    }
+
+    @ApiOperation("分页获取新品推荐商品")
+    @RequestMapping(value = "/newProductList", method = RequestMethod.GET)
+    @ResponseBody
+    public CommonResult<List<PmsProduct>> newProductList(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                                                         @RequestParam(value = "pageSize", defaultValue = "6") Integer pageSize) {
+        List<PmsProduct> productList = homeService.newProductList(pageNum,pageSize);
+        return CommonResult.success(productList);
     }
 }
