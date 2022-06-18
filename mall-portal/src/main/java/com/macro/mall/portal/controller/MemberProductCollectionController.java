@@ -11,8 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * 会员商品收藏管理Controller
  * Created by macro on 2018/8/2.
@@ -48,7 +46,7 @@ public class MemberProductCollectionController {
         }
     }
 
-    @ApiOperation("显示商品收藏列表")
+    @ApiOperation("显示当前用户商品收藏列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<MemberProductCollection>> list(@RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
@@ -65,7 +63,7 @@ public class MemberProductCollectionController {
         return CommonResult.success(memberProductCollection);
     }
 
-    @ApiOperation("清空商品收藏列表")
+    @ApiOperation("清空当前用户商品收藏列表")
     @RequestMapping(value = "/clear", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult clear() {
